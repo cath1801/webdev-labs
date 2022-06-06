@@ -1,6 +1,9 @@
 import React from 'react';
 import LikeButton from './LikeButton';
 import BookmarkButton from './BookmarkButton';
+import Comment from './Comment';
+import CommentButton from './CommentButton';
+import AddComment from './AddComment';
 import {getHeaders} from './utils';
 
 class Post extends React.Component {
@@ -34,6 +37,7 @@ class Post extends React.Component {
 
     render () {
         const post = this.state.post;
+
         return (
             <div className="card">
                 <img src={post.image_url} />
@@ -43,7 +47,10 @@ class Post extends React.Component {
                 <BookmarkButton bookmarkId={post.current_user_bookmark_id}
                                 postId={post.id}
                                 refreshPost={this.refreshPostDataFromServer}/>
-                <p>{post.caption}</p>
+                <span><p><b>{post.user.username}</b> {post.caption}</p></span>
+                <CommentButton length={post.comments.length}/>
+                <Comment comments={post.comments}/>
+                <AddComment refreshPost={this.refreshPostDataFromServer} postId={post.id}/>
             </div>
                 )
             }

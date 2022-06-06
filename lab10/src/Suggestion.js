@@ -8,7 +8,7 @@ class Suggestion extends React.Component {
 
         this.toggleFollow = this.toggleFollow.bind(this);
         this.createFollow = this.createFollow.bind(this);
-        // this.removeFollow = this.removeFollow.bind(this);
+        this.removeFollow = this.removeFollow.bind(this);
 
         // initialization code here
         this.state = {
@@ -16,7 +16,6 @@ class Suggestion extends React.Component {
             followed: "follow", 
             request_id: 0
         }
-        // this.refreshPostDataFromServer = this.refreshPostDataFromServer.bind(this);
     }
 
     componentDidMount() {
@@ -24,7 +23,7 @@ class Suggestion extends React.Component {
     }
 
     toggleFollow () {
-        if (this.state.followed == "unfollow") {
+        if (this.state.followed === "unfollow") {
             this.removeFollow();
             // console.log("remove follower")
         } else {
